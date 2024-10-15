@@ -9,7 +9,7 @@ const MemoizedParticipant = React.memo(
   }
 );
 
-function ParticipantGrid({ participantIds, isPresenting }) {
+function ParticipantGrid({ participantIds, isPresenting, currentParticipantId }) {
   const { sideBarMode } = useMeetingAppContext();
   const isMobile = window.matchMedia(
     "only screen and (max-width: 768px)"
@@ -66,6 +66,7 @@ function ParticipantGrid({ participantIds, isPresenting }) {
                 {participantIds
                   .slice(i * perRow, (i + 1) * perRow)
                   .map((participantId) => {
+                    const isCurrentUser = participantId === currentParticipantId;
                     return (
                       <div
                         key={`participant_${participantId}`}
@@ -78,10 +79,10 @@ function ParticipantGrid({ participantIds, isPresenting }) {
                               : "md:w-44 xl:w-48"
                             : "w-full"
                         } items-center justify-center h-full ${
-                          participantIds.length === 1
-                            ? "md:max-w-7xl 2xl:max-w-[1480px] "
-                            : "md:max-w-lg 2xl:max-w-2xl"
-                        } overflow-clip overflow-hidden  p-1`}
+                          isCurrentUser
+                            ? "md:max-w-sm 2xl:max-w-md" // Small view for current user
+                            : "md:max-w-3xl 2xl:max-w-[1480px]" // Large view for others
+                        } overflow-clip overflow-hidden p-1`}
                       >
                         <MemoizedParticipant participantId={participantId} />
                       </div>
@@ -102,7 +103,8 @@ export const MemoizedParticipantGrid = React.memo(
     return (
       JSON.stringify(prevProps.participantIds) ===
         JSON.stringify(nextProps.participantIds) &&
-      prevProps.isPresenting === nextProps.isPresenting
+      prevProps.isPresenting === nextProps.isPresenting &&
+      prevProps.currentParticipantId === nextProps.currentParticipantId
     );
   }
 );

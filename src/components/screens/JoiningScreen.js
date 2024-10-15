@@ -14,7 +14,6 @@ import CameraPermissionDenied from "../../icons/CameraPermissionDenied";
 import DropDown from "../DropDown";
 import DropDownCam from "../DropDownCam";
 import DropDownSpeaker from "../DropDownSpeaker";
-import NetworkStats from "../NetworkStats";
 import { useMeetingAppContext } from "../../MeetingAppContextDef";
 import { toast } from "react-toastify";
 
@@ -464,9 +463,9 @@ export function JoiningScreen({
 
                     {!isMobile && (
                       <>
-                        <div className="absolute top-2 right-10">
+                        {/* <div className="absolute top-2 right-10">
                           <NetworkStats />
-                        </div>
+                        </div> */}
 
                         <div className="flex mt-3">
                           {!isFirefox && (
