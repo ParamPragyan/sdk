@@ -1,5 +1,3 @@
-import { Popover, Transition } from "@headlessui/react";
-import { XIcon } from "@heroicons/react/outline";
 import { useParticipant } from "@videosdk.live/react-sdk";
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import ReactPlayer from "react-player";
@@ -10,7 +8,6 @@ import useWindowSize from "../hooks/useWindowSize";
 import MicOffSmallIcon from "../icons/MicOffSmallIcon";
 import SpeakerIcon from "../icons/SpeakerIcon";
 import { getQualityScore, nameTructed } from "../utils/common";
-import * as ReactDOM from "react-dom";
 import { useMeetingAppContext } from "../MeetingAppContextDef";
 export const CornerDisplayName = ({
   participantId,

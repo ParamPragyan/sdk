@@ -1,13 +1,12 @@
-import { useMeeting } from "@videosdk.live/react-sdk";
-import React, { Fragment } from "react";
-import useIsMobile from "../../hooks/useIsMobile";
-import useIsTab from "../../hooks/useIsTab";
-import { XIcon } from "@heroicons/react/outline";
-import { ChatPanel } from "./ChatPanel";
-import { ParticipantPanel } from "./ParticipantPanel";
-import { Dialog, Transition } from "@headlessui/react";
-import { useMediaQuery } from "react-responsive";
-import { useMeetingAppContext } from "../../MeetingAppContextDef";
+import { useMeeting } from '@videosdk.live/react-sdk';
+import React, { Fragment } from 'react';
+import useIsMobile from '../../hooks/useIsMobile';
+import useIsTab from '../../hooks/useIsTab';
+import { XIcon } from '@heroicons/react/outline';
+import { ParticipantPanel } from './ParticipantPanel';
+import { Dialog, Transition } from '@headlessui/react';
+import { useMediaQuery } from 'react-responsive';
+import { useMeetingAppContext } from '../../MeetingAppContextDef';
 
 const SideBarTabView = ({
   height,
@@ -39,7 +38,7 @@ const SideBarTabView = ({
           style={{
             height: height,
             borderRadius: 10,
-            overflow: "hidden",
+            overflow: 'hidden',
           }}
         >
           <>
@@ -49,17 +48,17 @@ const SideBarTabView = ({
                 style={{
                   padding: panelHeaderPadding,
                   height: panelHeaderHeight - 1,
-                  borderBottom: "1px solid #70707033",
+                  borderBottom: '1px solid #70707033',
                 }}
               >
                 <p className="text-base text-white font-bold">
-                  {sideBarMode === "PARTICIPANTS"
+                  {sideBarMode === 'PARTICIPANTS'
                     ? `${
                         sideBarMode.charAt(0).toUpperCase() +
-                          sideBarMode.slice(1).toLowerCase() || ""
+                          sideBarMode.slice(1).toLowerCase() || ''
                       } (${new Map(participants)?.size})`
                     : sideBarMode.charAt(0).toUpperCase() +
-                        sideBarMode.slice(1).toLowerCase() || ""}
+                        sideBarMode.slice(1).toLowerCase() || ''}
                 </p>
                 <button
                   className="text-white"
@@ -70,10 +69,8 @@ const SideBarTabView = ({
                 </button>
               </div>
             )}
-            {sideBarMode === "PARTICIPANTS" ? (
+            {sideBarMode === 'PARTICIPANTS' ? (
               <ParticipantPanel panelHeight={panelHeight} />
-            ) : sideBarMode === "CHAT" ? (
-              <ChatPanel panelHeight={panelHeight} />
             ) : null}
           </>
         </div>
@@ -152,8 +149,8 @@ export function SidebarConatiner({ height, sideBarContainerWidth }) {
               <div className="flex h-screen items-center justify-center text-center">
                 <Dialog.Panel className="w-screen transform overflow-hidden bg-gray-800 shadow-xl transition-all">
                   <SideBarTabView
-                    height={"100%"}
-                    sideBarContainerWidth={"100%"}
+                    height={'100%'}
+                    sideBarContainerWidth={'100%'}
                     panelHeight={height}
                     raisedHandsParticipants={raisedHandsParticipants}
                     panelHeaderHeight={panelHeaderHeight}

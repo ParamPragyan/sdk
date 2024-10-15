@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import animationData from "../../../src/static/animations/join_meeting.json";
 import Lottie from "lottie-react";
 import useIsTab from "../../hooks/useIsTab";
 import useIsMobile from "../../hooks/useIsMobile";
@@ -33,7 +32,6 @@ const WaitingToJoinScreen = () => {
   const animationDefaultOptions = {
     loop: true,
     autoplay: true,
-    animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -60,7 +58,6 @@ const WaitingToJoinScreen = () => {
           <Lottie
             loop={animationDefaultOptions.loop}
             autoplay={animationDefaultOptions.autoplay}
-            animationData={animationDefaultOptions.animationData}
             rendererSettings={{
               preserveAspectRatio:
                 animationDefaultOptions.rendererSettings.preserveAspectRatio,
